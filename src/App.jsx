@@ -1,6 +1,7 @@
 
 
 import { Header } from './components/header/header'
+import { MainPage } from './pages/MainPage/MainPage'
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
   return (
     <section>
       <Header/>
+      <MainPage/>
     </section>
   )
 }
