@@ -2,29 +2,68 @@ import axios from "axios"
 import { API_ROUTES } from "./API_routes"
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/movie';
-axios.defaults.headers.common['Authorization'] = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNTJkNjViNGQyZDEwZTgxMWJjM2I0MzNmYjg0YmU2ZSIsInN1YiI6IjY1N2EwNjE0ZWEzOTQ5MDEzODk4MTgwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.95vGDo8a4IPhGsSs7B443KK2kN2NPgVbx8YPx3ikP9A';
 
-export const getPopular = async() => (
-        await axios.get(API_ROUTES.popular).then((res)=>{
-            return res.data.results
-        })
-)
-
-export const getTop_rated = async() => (
-        await axios.get(API_ROUTES.top_rated).then((res)=>{
-            return res.data.results
-        })
-)
-
-export const getUpcoming = async() => (
-    await axios.get(API_ROUTES.upcoming).then((res)=>{
+export const getPopular = async () => (
+    await axios.get(API_ROUTES.popular, {
+        headers: {
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNTJkNjViNGQyZDEwZTgxMWJjM2I0MzNmYjg0YmU2ZSIsInN1YiI6IjY1N2EwNjE0ZWEzOTQ5MDEzODk4MTgwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.95vGDo8a4IPhGsSs7B443KK2kN2NPgVbx8YPx3ikP9A'
+        }
+    }).then((res) => {
         return res.data.results
     })
 )
 
-export const getMovie = async(id) => (
-    await axios.get(`${id}`).then((res) => {
+export const getTop_rated = async () => (
+    await axios.get(API_ROUTES.top_rated,
+        {
+            headers: {
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNTJkNjViNGQyZDEwZTgxMWJjM2I0MzNmYjg0YmU2ZSIsInN1YiI6IjY1N2EwNjE0ZWEzOTQ5MDEzODk4MTgwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.95vGDo8a4IPhGsSs7B443KK2kN2NPgVbx8YPx3ikP9A'
+            }
+        }).then((res) => {
+            return res.data.results
+        })
+)
+
+export const getUpcoming = async () => (
+    await axios.get(API_ROUTES.upcoming, {
+        headers: {
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNTJkNjViNGQyZDEwZTgxMWJjM2I0MzNmYjg0YmU2ZSIsInN1YiI6IjY1N2EwNjE0ZWEzOTQ5MDEzODk4MTgwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.95vGDo8a4IPhGsSs7B443KK2kN2NPgVbx8YPx3ikP9A'
+        }
+    }).then((res) => {
+        return res.data.results
+    })
+)
+
+export const getMovie = async (id) => (
+    await axios.get(`${id}`, {
+        headers: {
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNTJkNjViNGQyZDEwZTgxMWJjM2I0MzNmYjg0YmU2ZSIsInN1YiI6IjY1N2EwNjE0ZWEzOTQ5MDEzODk4MTgwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.95vGDo8a4IPhGsSs7B443KK2kN2NPgVbx8YPx3ikP9A'
+        }
+    }).then((res) => {
         return res.data
     })
 )
 
+export const getMovieMagnetLink = async (name) => {
+    const options = {
+        method: 'POST',
+        url: 'https://piratebay-torrent-search.p.rapidapi.com/search',
+        headers: {
+            'content-type': 'application/json',
+            'X-RapidAPI-Key': '7ed325bd7bmshe3d1c59967441dcp118920jsn141e5780e059',
+            'X-RapidAPI-Host': 'piratebay-torrent-search.p.rapidapi.com'
+        },
+        data: {
+            query: name,
+            page: 1
+        }
+    };
+
+    try {
+        const response = await axios.request(options);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+
+}
