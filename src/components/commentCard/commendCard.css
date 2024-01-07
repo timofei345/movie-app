@@ -1,0 +1,28 @@
+.input_block input{
+    color: black;
+    background: #fff;
+    border-radius: 10px;
+    padding: 16px 571px 32px 15px;
+    width: 100%;
+    
+    
+}
+.commentCard{
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+.input_block label{
+    color: #fff;
+font-size: 16px;
+font-weight: 400;
+line-height: normal;
+
+}
+    .input_block ::placeholder{
+    opacity: 0.5;
+    font-weight: 40;
+    line-height: normal;
+    font-size: 16px;
+   
+    }

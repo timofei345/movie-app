@@ -1,0 +1,70 @@
+.trendingCard{
+    width: 32%;
+}
+.trendingCard_poster{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 290px;
+    position: relative;
+  
+}
+.trendingCard_player{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.trendingCard_posterInfo{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px 15px;
+}
+
+.trendingCard_posterInfo p{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    
+
+}
+
+.trendingCard_info{
+    display: flex;
+    align-items: flex-start;
+    row-gap: 10px;
+    flex-direction: column;
+    
+
+}
+
+.trendingCard_genre{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+   
+    
+}
+.trendingCard_info p{
+    font-size: 24px;
+    font-weight: 600;
+    line-height: normal;
+    color: #fff;
+}
+.trendingCard_info span{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: #fff;
+    background: red;
+    border-radius: 10px;
+    padding: 8px;
+
+}
+
+

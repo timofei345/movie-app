@@ -10,8 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vidstack/player": "^1.6.5",
+    "@vidstack/player-react": "^1.6.5",
+    "axios": "^1.6.2",
+    "classnames": "^2.3.2",
+    "lit": "^2.8.0",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-player": "^2.14.1",
+    "react-router-dom": "^6.20.1",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
