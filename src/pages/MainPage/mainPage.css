@@ -103,5 +103,144 @@
     justify-content: center !important;
 }
 
+.trending_main{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+main{
+    padding: 70px 150px;
+}
+@media (min-width:1440px) {
+   main{
+    padding:70px 350px;
+   }
+}
+
+.trending_title{
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 20px;
+color: #fff;
+
+}
+
+.trending_title a{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: normal;
+    opacity: 0.5;
+
+}
+.trending_title h1{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: normal;
+}
+
+.newMovie{
+    margin-top: 70px;
+}
+
+.newMovie_main{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 40px;
+
+}
+
+.newMovie_title{
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 24px ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.newMovie_title a{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: normal;
+    opacity: 0.5;
+}
+
+.newSeries{
+    margin-top: 70px;
+}
+
+.newSeries_main{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recommended_main{
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ margin-top: 20px;
+ flex-wrap: wrap;
+ row-gap: 40px;
+}
+
+.recommended{
+    margin-top: 70px;
+}
+
+.recommended_title{
+display: flex;
+align-items: center;
+justify-content: space-between;
+color: #fff;
+font-size: 24px;
+font-weight: 700;
+line-height: normal;
+
+
+}
+
+.recommended_buttons{
+    display: flex;
+    gap: 24px;
+}
+
+.recommended_buttons button{
+    
+    
+    border-radius: 15px;
+    align-items: center;
+    padding: 10px;  
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    border: 2px solid #F00;
+    opacity: 0.5;
+    
+
+}
+
+.recommended_titleInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 24px;
+}
+
+.active{
+    background: red;
+    opacity: 1 !important;
+}
+
+.recommended_title a{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: normal;
+    opacity: 0.5;
+}
 
 
