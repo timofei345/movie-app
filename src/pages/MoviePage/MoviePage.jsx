@@ -19,6 +19,7 @@ export const MoviePage = () => {
     const [prodCountry, setProdCountry] = useState([]);
     const [budget, setBudget] = useState(0);
     const [revenue, setRevenue] = useState(0);
+    const [link, setLink] = useState("");
 
     const { id } = useParams();
 
@@ -29,12 +30,13 @@ export const MoviePage = () => {
             setProdCountry(res.production_countries);
             setBudget(res.budget);
             setRevenue(res.revenue);
-            console.log(JSON.parse(localStorage.getItem("movie")).title);
+            console.log(JSON.parse(localStorage.getItem("movie")) === null);
             if (
                 JSON.parse(localStorage.getItem("movie")).title !== res.title ||
                 JSON.parse(localStorage.getItem("movie")) === null
             ) {
                 getMovieMagnetLink(res.title).then((magnet) => {
+                    console.log(magnet);
                     localStorage.setItem(
                         "movie",
                         JSON.stringify({
@@ -42,10 +44,11 @@ export const MoviePage = () => {
                             magnet: magnet[0].magnet,
                         })
                     );
+                    setLink(magnet[0].magnet);
                 });
             }
         });
-    }, [setData, id, setBudget, setRevenue]);
+    }, [setData, id, setBudget, setRevenue, link]);
 
     return (
         <>
@@ -115,7 +118,7 @@ export const MoviePage = () => {
                         </ul>
                     </div>
                 </div>
-                <Player />
+                <Player link={link} />
                 <div className='moviePage_proposeTitle'>
                     <h1>You may also like</h1>
                 </div>

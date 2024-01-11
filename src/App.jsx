@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { NotFound } from "./pages/error/NotFound";
 
 function App() {
+    localStorage.setItem("movie", JSON.stringify({}));
     return (
         <Routes>
             <Route path='/' element={<MainPage />} />

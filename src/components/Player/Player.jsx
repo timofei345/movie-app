@@ -10,7 +10,7 @@ import volumeIcon from "./assets/volume.svg";
 import axios from "axios";
 
 // eslint-disable-next-line react/prop-types
-export const Player = () => {
+export const Player = ({ link }) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [hideCenterBtn, setHideCenterBtn] = useState(false);
     const [volume, setVolume] = useState(1);
@@ -140,39 +140,42 @@ export const Player = () => {
     };
 
     useEffect(() => {
-        const torrentId = JSON.parse(localStorage.getItem("movie")).magnet;
+        const torrentId = link;
         const video = videoRef.current;
-        const handleAddTorrent = async () => {
-            try {
-                const response = await axios.post(
-                    "https://movie-back-c1a90abc9f89.herokuapp.com/add-torrent",
-                    { torrentId }
-                );
-                const videoUrl = response.data.url;
+        console.log(link);
 
-                video.src = videoUrl;
-                video.load();
-            } catch (error) {
-                console.error("Ошибка при добавлении торрента:", error);
-            }
-        };
+        if (link) {
+            const handleAddTorrent = async () => {
+                try {
+                    const response = await axios.post(
+                        "https://movie-back-c1a90abc9f89.herokuapp.com/add-torrent",
+                        { torrentId }
+                    );
+                    const videoUrl = response.data.url;
 
-        const fetchSubtitles = async () => {
-            try {
-                const response = await axios.get(
-                    `https://movie-back-c1a90abc9f89.herokuapp.com/subtitle/${encodeURIComponent(
-                        torrentId
-                    )}`
-                );
-                const parsedSubtitles = parseVTT(response.data); // You'll need a parser function for VTT format
-                setSubtitles(parsedSubtitles);
-            } catch (error) {
-                console.error("Error fetching subtitles:", error);
-            }
-        };
+                    video.src = videoUrl;
+                    video.load();
+                } catch (error) {
+                    console.error("Ошибка при добавлении торрента:", error);
+                }
+            };
 
-        handleAddTorrent();
-        fetchSubtitles();
+            const fetchSubtitles = async () => {
+                try {
+                    const response = await axios.get(
+                        `https://movie-back-c1a90abc9f89.herokuapp.com/subtitle/${encodeURIComponent(
+                            torrentId
+                        )}`
+                    );
+                    const parsedSubtitles = parseVTT(response.data);
+                    setSubtitles(parsedSubtitles);
+                } catch (error) {
+                    console.error("Error fetching subtitles:", error);
+                }
+            };
+            handleAddTorrent();
+            fetchSubtitles();
+        }
 
         const updateProgress = () => {
             setProgress((video.currentTime / video.duration) * 100);
@@ -188,7 +191,7 @@ export const Player = () => {
                 );
                 const duration = video.duration;
                 if (duration > 0) {
-                    setBuffered((bufferedEnd / duration) * 100); // percentage of video that's been buffered
+                    setBuffered((bufferedEnd / duration) * 100);
                 }
             }
         };
@@ -203,10 +206,10 @@ export const Player = () => {
                 updateProgress,
                 handleProgress
             );
-    }, [videoRef]);
+    }, [videoRef, link]);
 
     const getCurrentSubtitle = () => {
-        const currentTime = videoRef.current?.currentTime; // Get the current time of the video
+        const currentTime = videoRef.current?.currentTime;
         if (!currentTime) return null;
 
         const result = subtitles.find(

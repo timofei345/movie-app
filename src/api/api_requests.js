@@ -50,7 +50,7 @@ export const getMovieMagnetLink = async (name) => {
         url: 'https://piratebay-torrent-search.p.rapidapi.com/search',
         headers: {
             'content-type': 'application/json',
-            'X-RapidAPI-Key': '7ed325bd7bmshe3d1c59967441dcp118920jsn141e5780e059',
+            'X-RapidAPI-Key': '870012af52msh9abb62c599dda90p11aa85jsn26df9051a594',
             'X-RapidAPI-Host': 'piratebay-torrent-search.p.rapidapi.com'
         },
         data: {
