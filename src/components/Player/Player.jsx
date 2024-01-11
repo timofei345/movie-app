@@ -145,7 +145,7 @@ export const Player = () => {
         const handleAddTorrent = async () => {
             try {
                 const response = await axios.post(
-                    "http://localhost:3001/add-torrent",
+                    "https://movie-back-c1a90abc9f89.herokuapp.com/add-torrent",
                     { torrentId }
                 );
                 const videoUrl = response.data.url;
@@ -160,7 +160,7 @@ export const Player = () => {
         const fetchSubtitles = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:3001/subtitle/${encodeURIComponent(
+                    `https://movie-back-c1a90abc9f89.herokuapp.com/subtitle/${encodeURIComponent(
                         torrentId
                     )}`
                 );
